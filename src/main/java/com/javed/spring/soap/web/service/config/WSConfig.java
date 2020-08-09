@@ -1,5 +1,7 @@
 package com.javed.spring.soap.web.service.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -12,9 +14,13 @@ import org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition;
 import org.springframework.xml.xsd.SimpleXsdSchema;
 import org.springframework.xml.xsd.XsdSchema;
 
+
+
 @Configuration
 @EnableWs
 public class WSConfig extends WsConfigurerAdapter {
+
+    private Logger logger = LoggerFactory.getLogger(WSConfig.class);
 
     @Bean
     public ServletRegistrationBean messageDispatcherServlet (ApplicationContext applicationContext) {
@@ -23,6 +29,7 @@ public class WSConfig extends WsConfigurerAdapter {
         messageDispatcherServlet.setApplicationContext(applicationContext);
         messageDispatcherServlet.setTransformWsdlLocations(true);
 
+        logger.debug("successfully setup application message dispatcher servlet");
         return new ServletRegistrationBean(messageDispatcherServlet, "/soapws/*");
     }
 
@@ -35,11 +42,13 @@ public class WSConfig extends WsConfigurerAdapter {
         defaultWsdl11Definition.setTargetNamespace("http://www.concretepage.com/article-ws");
         defaultWsdl11Definition.setSchema(xsdSchema);
 
+        logger.debug("configured default wsdl11 definition");
         return defaultWsdl11Definition;
     }
 
     @Bean
     public XsdSchema xsdSchema() {
+        logger.debug("configured xsd schema for application");
         return new SimpleXsdSchema(new ClassPathResource("xsds/articles.xsd"));
     }
 }
