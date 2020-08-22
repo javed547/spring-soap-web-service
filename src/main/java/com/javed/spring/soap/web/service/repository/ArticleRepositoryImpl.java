@@ -6,20 +6,21 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
-public class ArticleRepositoryImpl implements ArticleRepository {
+// here we have removed the implements from class implementation
+//@Repository
+public class ArticleRepositoryImpl {
 
-    @Override
+    //@Override
     public List<Articles> getAllArticles() {
         List<Articles> articlesList = new ArrayList<>();
 
         Articles articles = new Articles();
-        articles.setArticleId(1l);
+        articles.setArticleId("1");
         articles.setTitle("Percy Jackson");
         articles.setCategory("Comics");
 
         Articles harryPotter = new Articles();
-        harryPotter.setArticleId(2l);
+        harryPotter.setArticleId("2");
         harryPotter.setTitle("Harry Potter");
         harryPotter.setCategory("Novel");
 
@@ -28,28 +29,28 @@ public class ArticleRepositoryImpl implements ArticleRepository {
         return articlesList;
     }
 
-    @Override
+    //@Override
     public Articles getArticlesById(long articleId) {
         Articles harryPotter = new Articles();
 
-        harryPotter.setArticleId(2l);
+        harryPotter.setArticleId("2");
         harryPotter.setTitle("Harry Potter");
         harryPotter.setCategory("Novel");
 
         return harryPotter;
     }
 
-    @Override
+    //@Override
     public Boolean addArticles(Articles articles) {
         return false;
     }
 
-    @Override
+    //@Override
     public void updateArticle(Articles articles) {
 
     }
 
-    @Override
+    //@Override
     public void deleteArticle(Articles articles) {
 
     }

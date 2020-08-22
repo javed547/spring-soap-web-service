@@ -1,22 +1,29 @@
 package com.javed.spring.soap.web.service.dto;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.io.Serializable;
 
+@Document("article")
 public class Articles implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private long articleId;
+    @Id
+    private String articleId;
 
+    @Indexed(name = "title")
     private String title;
 
     private String category;
 
-    public long getArticleId() {
+    public String getArticleId() {
         return articleId;
     }
 
-    public void setArticleId(long articleId) {
+    public void setArticleId(String articleId) {
         this.articleId = articleId;
     }
 
@@ -34,5 +41,14 @@ public class Articles implements Serializable {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    @Override
+    public String toString() {
+        return "Articles{" +
+                "articleId='" + articleId + '\'' +
+                ", title='" + title + '\'' +
+                ", category='" + category + '\'' +
+                '}';
     }
 }

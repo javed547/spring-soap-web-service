@@ -31,7 +31,7 @@ public class ArticleEndpoint {
         GetArticleByIdResponse getArticleByIdResponse = new GetArticleByIdResponse();
         ArticleInfo articleInfo = new ArticleInfo();
 
-        BeanUtils.copyProperties(articleService.getArticlesById(getArticleByIdRequest.getArticleId()), articleInfo);
+        BeanUtils.copyProperties(articleService.getArticlesById(String.valueOf(getArticleByIdRequest.getArticleId())), articleInfo);
         logger.info("adding article to response");
         getArticleByIdResponse.setArticleInfo(articleInfo);
 
@@ -72,7 +72,7 @@ public class ArticleEndpoint {
         articles.setCategory(addArticleRequest.getCategory());
 
         Boolean flag = articleService.addArticles(articles);
-        if (flag) {
+        if (!flag) {
             logger.info("article already exist, sending appropriate response");
             serviceStatus.setStatusCode("CONFLICT");
             serviceStatus.setMessage("Content Already Available");
@@ -102,6 +102,7 @@ public class ArticleEndpoint {
         ServiceStatus serviceStatus = new ServiceStatus();
 
         Articles articles = new Articles();
+        articles.setArticleId(updateArticleRequest.getArticleInfo().getArticleId());
         articles.setTitle(updateArticleRequest.getArticleInfo().getTitle());
         articles.setCategory(updateArticleRequest.getArticleInfo().getCategory());
 
@@ -126,7 +127,7 @@ public class ArticleEndpoint {
     @ResponsePayload
     public DeleteArticleResponse deleteArticle(@RequestPayload DeleteArticleRequest deleteArticleRequest) {
         logger.debug("IN ArticleEndpoint:deleteArticle");
-        Articles articles = articleService.getArticlesById(deleteArticleRequest.getArticleId());
+        Articles articles = articleService.getArticlesById(String.valueOf(deleteArticleRequest.getArticleId()));
         ServiceStatus serviceStatus = new ServiceStatus();
 
         if (articles == null ) {

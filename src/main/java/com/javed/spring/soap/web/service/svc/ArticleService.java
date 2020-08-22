@@ -4,12 +4,11 @@ import com.javed.spring.soap.web.service.dto.Articles;
 
 import java.util.List;
 
-// TODO add mongo db implementation here as mysql is not working on local machine
 public interface ArticleService {
 
     List<Articles> getAllArticles();
 
-    Articles getArticlesById(long articleId);
+    Articles getArticlesById(String articleId);
 
     Boolean addArticles (Articles articles);
 

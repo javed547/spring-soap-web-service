@@ -40,13 +40,13 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "getArticleByIdRequest")
 public class GetArticleByIdRequest {
 
-    protected long articleId;
+    protected String articleId;
 
     /**
      * Gets the value of the articleId property.
      * 
      */
-    public long getArticleId() {
+    public String getArticleId() {
         return articleId;
     }
 
@@ -54,7 +54,7 @@ public class GetArticleByIdRequest {
      * Sets the value of the articleId property.
      * 
      */
-    public void setArticleId(long value) {
+    public void setArticleId(String value) {
         this.articleId = value;
     }
 

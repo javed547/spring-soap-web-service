@@ -43,7 +43,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ArticleInfo {
 
-    protected long articleId;
+    protected String articleId;
     @XmlElement(required = true)
     protected String title;
     @XmlElement(required = true)
@@ -53,7 +53,7 @@ public class ArticleInfo {
      * Gets the value of the articleId property.
      * 
      */
-    public long getArticleId() {
+    public String getArticleId() {
         return articleId;
     }
 
@@ -61,7 +61,7 @@ public class ArticleInfo {
      * Sets the value of the articleId property.
      * 
      */
-    public void setArticleId(long value) {
+    public void setArticleId(String value) {
         this.articleId = value;
     }
 

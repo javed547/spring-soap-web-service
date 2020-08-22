@@ -6,7 +6,7 @@
     <xs:element name="getArticleByIdRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="articleId" type="xs:long"/>
+                <xs:element name="articleId" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -19,7 +19,7 @@
     </xs:element>
     <xs:complexType name="articleInfo">
         <xs:sequence>
-            <xs:element name="articleId" type="xs:long"/>
+            <xs:element name="articleId" type="xs:string"/>
             <xs:element name="title" type="xs:string"/>
             <xs:element name="category" type="xs:string"/>
         </xs:sequence>
@@ -73,7 +73,7 @@
     <xs:element name="deleteArticleRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="articleId" type="xs:long"/>
+                <xs:element name="articleId" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
